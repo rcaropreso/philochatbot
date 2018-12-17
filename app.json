@@ -1,0 +1,12 @@
+{
+    "name": "get-weather-api-for-philobot",
+    "description": "An API that exposes weather in the form of a response that is accepted by DialogFlow",
+    "repository": "https://github.com/rcaropreso/philochatbot.git",
+    "keywords": [
+        "weather",
+        "api",
+        "philo",
+        "dialogflow",
+        "chat"
+    ]
+}
