@@ -19,11 +19,10 @@ server.use(bodyParser.json());
 
 server.post('/get-weather-details', (req, res) => {
 
-    //const movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : 'The Godfather';
-    //const reqUrl = encodeURI(`http://www.omdbapi.com/?t=${movieToSearch}&apikey=${API_KEY}`);
-
-    const cityName = 'Itu';
+    const cityName = req.body['queryResult']['parameters']['geo-city'];
     
+    //console.log(req.body['queryResult']['parameters']['geo-city']);
+
     callWeatherApi(cityName).then((output) => {
             console.log({ 'fulfillmentText': output });
             res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
@@ -38,11 +37,9 @@ server.listen((process.env.PORT || 9000), () => {
     console.log("Server is up and running...");
 });
 
-
-//const functions = require('firebase-functions');
-
-/*
 function callWeatherApi(cityName) {
+    var output ='';
+
     return new Promise((resolve, reject) => {
         const openWeatherAPIKey = '15c8fff34911d49e4f2cfb2138499320';
         const host = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&appid=' + openWeatherAPIKey;
@@ -82,8 +79,9 @@ function callWeatherApi(cityName) {
             });
         });
     });
-}*/
+}
 
+/*
 function callWeatherApi(cityName) {
     var output = '';
 
@@ -131,3 +129,4 @@ function callWeatherApi(cityName) {
         });
     });
 }
+*/
