@@ -26,7 +26,7 @@ server.post('/get-weather-details', (req, res) => {
     
     callWeatherApi(cityName).then((output) => {
             console.log({ 'fulfillmentText': output });
-            res.json({ 'fulfillmentText': `This is a text response` }); // Return the results of the weather API to Dialogflow
+            res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
         }).catch(() => {
             console.log({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
             res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
